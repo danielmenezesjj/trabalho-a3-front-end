@@ -1,18 +1,16 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setPageTitle } from '../../features/common/headerSlice'
-import Integration from '../../features/integration'
+import ModuloSuperMercado from '../../features/ModuloSuperMercado/ModuloVendas'
 
 function InternalPage(){
-
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setPageTitle({ title : "Produtos"}))
+        dispatch(setPageTitle({ title : "Carrinho "}))
       }, [])
-      
     return(
-        <Integration />
+        <ModuloSuperMercado />
     )
 }
 

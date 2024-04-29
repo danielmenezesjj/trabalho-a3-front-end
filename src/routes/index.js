@@ -13,6 +13,7 @@ const Calendar = lazy(() => import('../pages/protected/Calendar'))
 const Team = lazy(() => import('../pages/protected/Team'))
 const Transactions = lazy(() => import('../pages/protected/Transactions'))
 const Bills = lazy(() => import('../pages/protected/Bills'))
+const ModuloSuperMercado = lazy(() => import('../pages/protected/ModuloSuperMercado'))
 const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
@@ -45,12 +46,12 @@ const routes = [
     component: Transactions,
   },
   {
-    path: '/settings-profile',
-    component: ProfileSettings,
+    path: '/vendas',
+    component: ModuloSuperMercado,
   },
   {
-    path: '/settings-billing',
-    component: Bills,
+    path: '/settings-profile',
+    component: ProfileSettings,
   },
   {
     path: '/getting-started',
