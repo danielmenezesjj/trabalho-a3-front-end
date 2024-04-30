@@ -22,6 +22,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsBoxes } from "react-icons/bs";
 import { BsBagPlus } from "react-icons/bs";
 import { BsCartPlus } from "react-icons/bs";
+import { BsPersonLock } from "react-icons/bs";
+
 
 
 
@@ -108,28 +110,28 @@ const routes = [
       }
     ]
   },
-  // {
-  //   path: '', //no url needed as this has submenu
-  //   icon: <DocumentTextIcon className={`${iconClasses} inline`} />, // icon component
-  //   name: 'Documentation', // name that appear in Sidebar
-  //   submenu: [
-  //     {
-  //       path: '/app/getting-started', // url
-  //       icon: <DocumentTextIcon className={submenuIconClasses} />, // icon component
-  //       name: 'Getting Started', // name that appear in Sidebar
-  //     },
-  //     {
-  //       path: '/app/features',
-  //       icon: <TableCellsIcon className={submenuIconClasses} />,
-  //       name: 'Features',
-  //     },
-  //     {
-  //       path: '/app/components',
-  //       icon: <CodeBracketSquareIcon className={submenuIconClasses} />,
-  //       name: 'Components',
-  //     }
-  //   ]
-  // },
+  {
+    path: '', //no url needed as this has submenu
+    icon: <BsPersonLock  className={`${iconClasses} inline`} />, // icon component
+    name: 'Administrador', // name that appear in Sidebar
+    submenu: [
+      {
+        path: '/app/getting-started', // url
+        icon: <DocumentTextIcon className={submenuIconClasses} />, // icon component
+        name: 'Cadastrar funcionario', // name that appear in Sidebar
+      },
+      {
+        path: '/app/features',
+        icon: <TableCellsIcon className={submenuIconClasses} />,
+        name: 'Features',
+      },
+      {
+        path: '/app/components',
+        icon: <CodeBracketSquareIcon className={submenuIconClasses} />,
+        name: 'Components',
+      }
+    ]
+  },
 
 ]
 

@@ -7,24 +7,17 @@
 This is a free admin dashboard template that uses **Daisy UI** and React js. It has **fully customizable and themable CSS**  CSS and is powered by Tailwind CSS utility classes. Additionally, it comes with **redux toolkit** and other libraries already set up.
 
 
-## Preview
-
-🚀 [Live preview](https://tailwind-dashboard-template-dashwind.vercel.app/)
-
-
-![App Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/tr:h-600/Screenshot_2023-05-09_at_12.57.37_PM_z94SiShUDS.png?updatedAt=1683617550144)
-
 
 
 ## Features
 
-- **Light/dark** mode toggle
-- Token based user **authentication**
-- **Submenu support** in sidebar
-- Store management using **redux toolkit**
-- **Daisy UI** components and **Tailwind** support
-- **Right and left sidebar**, Universal loader, notifications
-- **Calendar**, global modal, **chart js 2**  and other components
+* [x] CRUD PRODUTOS
+* [X] CONTROLE DE ESTOQUE
+* [X] CRIAR CARRINHO DE COMPRAS
+* [X] REALIZAR VENDA
+* [ ] CADASTRAR FUNCIONARIO
+* [ ] CONSULTAR EXTRATO POR CPF
+
 
 
 ## Installation
@@ -46,9 +39,7 @@ Go to project directory and run (make sure you have node installed first)
 - [Redux toolkit v1.9](https://redux-toolkit.js.org/)
 - [React ChartJS 2 v5](https://react-chartjs-2.js.org/)
 
-## Documentation
 
-[Documentation](https://tailwind-dashboard-template-dashwind.vercel.app/documentation)
 
 ## Page Examples
 
@@ -61,30 +52,12 @@ Go to project directory and run (make sure you have node installed first)
 
 
 
-## Diagramas
 
-🚀 [Leads Screenshot](https://i.imgur.com/o2G9hrx.png) 
-
-
-## Roadmap
-
-- Addition of users, chat/ inbox page
-- Calendar improments
-- Seperate templates based on business functions like CRM, Sales, Project Management
-
-
-## Contributing
-
-Contributions are always welcome!
 
 ## License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-
-## Feedback
-
-If you have any feedback, please reach out [here](https://forms.gle/8G7PsvQp8X1Swcf29)
 
 
 
