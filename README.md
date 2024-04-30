@@ -12,21 +12,19 @@ Trabalho A3 - Objetivo do trabalho é desenvolver um sistema que gerencie os cai
 * [X] CONTROLE DE ESTOQUE
 * [X] CRIAR CARRINHO DE COMPRAS
 * [X] REALIZAR VENDA
-* [ ] CADASTRAR FUNCIONARIO
+* [X] CADASTRAR FUNCIONARIO
 * [ ] CONSULTAR EXTRATO POR CPF
 
 
 
-## Installation
-
-Go to project directory and run (make sure you have node installed first)
+## Instalação
 
 ```bash
   npm install
   npm start
 ```
     
-## Core Libraries Used
+## Bibliotecas utilizadas
 
 - [React JS v18.2.0](https://reactjs.org/)
 - [React Router v6.4.3](https://reactrouter.com/en/main)
@@ -42,18 +40,10 @@ Go to project directory and run (make sure you have node installed first)
 
 |                          |                               |
 :-------------------------:|:-------------------------:
-![Leads Screenshot](https://i.imgur.com/o2G9hrx.png) | ![Setting Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-01-20_at_12.43.25_PM_xZBThuZdU.png?ik-sdk-version=javascript-1.4.3&updatedAt=1674198832089) 
-![Calendar Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-05-09_at_1.02.03_PM_pObZm43gl.png?updatedAt=1683617549958) | ![Register Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-01-20_at_12.43.00_PM_1fkpMRG90.png?ik-sdk-version=javascript-1.4.3&updatedAt=1674198831908)
+![BD](https://i.imgur.com/o2G9hrx.png) | ![CLASSE](https://i.imgur.com/NogRGIG.png) 
 
 
 
-
-
-
-
-## License
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 
 
