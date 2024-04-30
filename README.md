@@ -36,7 +36,7 @@ Trabalho A3 - Objetivo do trabalho é desenvolver um sistema que gerencie os cai
 
 
 
-## Page Examples
+## Diagramas
 
 |                          |                               |
 :-------------------------:|:-------------------------:
