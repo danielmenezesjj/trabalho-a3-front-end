@@ -1,73 +1,117 @@
-import {useState, useRef} from 'react'
-import {Link} from 'react-router-dom'
-import LandingIntro from './LandingIntro'
-import ErrorText from  '../../components/Typography/ErrorText'
+import moment from "moment"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import TitleCard from "../../components/Cards/TitleCard"
+import { showNotification } from '../common/headerSlice'
 import InputText from '../../components/Input/InputText'
+import TextAreaInput from '../../components/Input/TextAreaInput'
+import ToogleInput from '../../components/Input/ToogleInput'
+import SelectBox from "../../components/Input/SelectBox"
+import axios from 'axios'; // Ou use fetch se preferir
 
-function Register(){
+function Register() {
+    const dispatch = useDispatch();
+    const [perfilOptions, setPerfilOptions] = useState([]);
+    const [formData, setFormData] = useState({
+        nome: "",
+        email: "",
+        password: "",
+        cidade: "",
+        about: "",
+        isActive: true,
+        perfis: [],
+    });
 
-    const INITIAL_REGISTER_OBJ = {
-        name : "",
-        password : "",
-        emailId : ""
-    }
+    useEffect(() => {
+        // Chamada à API para obter a lista de perfis
+        fetch('http://localhost:9005/public/perfil')
+            .then(response => response.json())
+            .then(data => {
+                const options = data.map(perfil => ({
+                    value: perfil.id, // Use o ID do perfil
+                    label: perfil.role, // Exiba o role do perfil
+                }));
+                setPerfilOptions(options);
+            })
+            .catch(error => {
+                console.error('Erro ao obter as opções de perfil:', error);
+            });
+    }, []);
 
-    const [loading, setLoading] = useState(false)
-    const [errorMessage, setErrorMessage] = useState("")
-    const [registerObj, setRegisterObj] = useState(INITIAL_REGISTER_OBJ)
-
-    const submitForm = (e) =>{
-        e.preventDefault()
-        setErrorMessage("")
-
-        if(registerObj.name.trim() === "")return setErrorMessage("Name is required! (use any value)")
-        if(registerObj.emailId.trim() === "")return setErrorMessage("Email Id is required! (use any value)")
-        if(registerObj.password.trim() === "")return setErrorMessage("Password is required! (use any value)")
-        else{
-            setLoading(true)
-            // Call API to check user credentials and save token in localstorage
-            localStorage.setItem("token", "DumyTokenHere")
-            setLoading(false)
-            window.location.href = '/app/welcome'
+    const updateFormValue = ({ updateType, value }) => {
+        console.log(updateType, value);
+        // Atualiza o formData com base no updateType
+        setFormData((prevData) => ({
+            ...prevData,
+            [updateType]: value,
+        }));
+        // Encontre a opção correspondente em perfilOptions
+        console.log(perfilOptions)
+        const selectedOption = perfilOptions.find(option => option.value == value);
+        if (selectedOption) {
+            // Se a opção correspondente existir, atualize o perfil selecionado
+            setFormData((prevData) => ({
+                ...prevData,
+                perfis: [{ id: value, role: selectedOption.label }],
+            }));
         }
-    }
+    };
 
-    const updateFormValue = ({updateType, value}) => {
-        setErrorMessage("")
-        setRegisterObj({...registerObj, [updateType] : value})
-    }
+    const handleSubmit = async () => {
+        const dataToSubmit = {
+            email: formData.email,
+            password: formData.password,
+            isActive: formData.isActive,
+            name: formData.nome,
+            cidade: formData.cidade,
+            about: formData.about,
+            perfis: formData.perfis,
+        };
+        console.log(dataToSubmit)
+        try {
+            // Enviando a solicitação POST com fetch
+            const response = await fetch('http://localhost:9005/public/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Defina o tipo de conteúdo como JSON
+                },
+                body: JSON.stringify(dataToSubmit), // Converta os dados em JSON
+            });
+            if (response.status == '201') {
+                dispatch(showNotification({ message: "Funcionario cadastrado com sucesso!", status: 1 }));
+                window.location.reload();
+            } 
+        } catch (error) {
+            console.error('Erro ao enviar dados para a API:', error);
+        }
+    };
 
-    return(
-        <div className="min-h-screen bg-base-200 flex items-center">
-            <div className="card mx-auto w-full max-w-5xl  shadow-xl">
-                <div className="grid  md:grid-cols-2 grid-cols-1  bg-base-100 rounded-xl">
-                <div className=''>
-                        <LandingIntro />
+    return (
+        <>
+            <TitleCard title="Cadastrar funcionário" topMargin="mt-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <InputText labelTitle="Nome" defaultValue={formData.nome} updateFormValue={updateFormValue} updateType="nome" />
+                    <InputText labelTitle="Email" defaultValue={formData.email} updateFormValue={updateFormValue} updateType="email" />
+                    <InputText labelTitle="Senha" defaultValue={formData.password} updateFormValue={updateFormValue} updateType="password" />
+                    <InputText labelTitle="Cidade" defaultValue={formData.cidade} updateFormValue={updateFormValue} updateType="cidade" />
+                    <TextAreaInput labelTitle="About" defaultValue={formData.about} updateFormValue={updateFormValue} updateType="about" />
+                    <SelectBox
+                        labelTitle="Perfil"
+                        defaultValue={formData.perfis.length ? formData.perfis[0].id : ''}
+                        containerStyle="form-control w-full"
+                        placeholder="Selecione um perfil..."
+                        options={perfilOptions}
+                        updateType="language"
+                        updateFormValue={updateFormValue}
+                    />
+                    <ToogleInput updateType="isActive" labelTitle="Status" defaultValue={formData.isActive} updateFormValue={updateFormValue} />
                 </div>
-                <div className='py-24 px-10'>
-                    <h2 className='text-2xl font-semibold mb-2 text-center'>Register</h2>
-                    <form onSubmit={(e) => submitForm(e)}>
-
-                        <div className="mb-4">
-
-                            <InputText defaultValue={registerObj.name} updateType="name" containerStyle="mt-4" labelTitle="Name" updateFormValue={updateFormValue}/>
-
-                            <InputText defaultValue={registerObj.emailId} updateType="emailId" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue}/>
-
-                            <InputText defaultValue={registerObj.password} type="password" updateType="password" containerStyle="mt-4" labelTitle="Password" updateFormValue={updateFormValue}/>
-
-                        </div>
-
-                        <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>
-                        <button type="submit" className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>Register</button>
-
-                        <div className='text-center mt-4'>Already have an account? <Link to="/login"><span className="  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200">Login</span></Link></div>
-                    </form>
+                <div className="mt-16">
+                    <button className="btn btn-primary float-right" onClick={handleSubmit}>Cadastrar</button>
                 </div>
-            </div>
-            </div>
-        </div>
-    )
+            </TitleCard>
+        </>
+    );
 }
 
-export default Register
+export default Register;
