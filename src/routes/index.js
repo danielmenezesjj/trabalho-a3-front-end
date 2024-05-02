@@ -8,6 +8,7 @@ const Page404 = lazy(() => import('../pages/protected/404'))
 const Produtos = lazy(() => import('../pages/protected/Produtos'))
 const ModuloSuperMercado = lazy(() => import('../pages/protected/ModuloSuperMercado'))
 const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
+const Funcionarios = lazy(() => import('../pages/protected/Funcionarios'))
 const Register = lazy(() => import('../pages/Register'))
 
 
@@ -27,6 +28,10 @@ const routes = [
   {
     path: '/produtos',
     component: Produtos,
+  },
+  {
+    path: '/funcionarios',
+    component: Funcionarios,
   },
   {
     path: '/settings-profile',

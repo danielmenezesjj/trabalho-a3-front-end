@@ -23,6 +23,10 @@ import { BsBoxes } from "react-icons/bs";
 import { BsBagPlus } from "react-icons/bs";
 import { BsCartPlus } from "react-icons/bs";
 import { BsPersonLock } from "react-icons/bs";
+import { AiOutlineUserSwitch } from "react-icons/ai";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+
+
 
 const iconClasses = `h-6 w-6`
 const submenuIconClasses = `h-5 w-5`
@@ -78,13 +82,13 @@ if (role == 'FUNCIONARIO') {
       submenu: [
         {
           path: '/app/register', // url
-          icon: <DocumentTextIcon className={submenuIconClasses} />, // icon component
+          icon: <AiOutlineUsergroupAdd  className={submenuIconClasses} />, // icon component
           name: 'Cadastrar funcionario', // name that appear in Sidebar
         },
         {
-          path: '/app/features',
-          icon: <TableCellsIcon className={submenuIconClasses} />,
-          name: 'Features',
+          path: '/app/funcionarios',
+          icon: <AiOutlineUserSwitch  className={submenuIconClasses} />,
+          name: 'Lista de funcionarios',
         },
         {
           path: '/app/components',

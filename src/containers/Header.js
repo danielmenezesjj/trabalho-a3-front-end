@@ -75,7 +75,7 @@ function Header() {
                     <div className="dropdown dropdown-end ml-4">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src={imagem} alt="profile" />
+                                <img src={imagem || 'https://daniel-estudos-app.s3.us-east-2.amazonaws.com/usersPadrao.png'} alt="profile" />
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
