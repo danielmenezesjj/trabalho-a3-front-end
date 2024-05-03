@@ -269,7 +269,7 @@ function ModuloVendas() {
                         </tbody>
                     </table>
                 </div>
-                <h3>Total: {valorTotal}</h3> {/* Exibir o valor total com duas casas decimais */}
+                <h3>Total: {valorTotal.toFixed(2)}</h3>
 
                 <div className="mt-16">
                     <button className="btn btn-primary float-right" onClick={() => updateProfile()}>

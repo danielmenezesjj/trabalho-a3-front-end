@@ -10,6 +10,7 @@ const ModuloSuperMercado = lazy(() => import('../pages/protected/ModuloSuperMerc
 const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
 const Funcionarios = lazy(() => import('../pages/protected/Funcionarios'))
 const Register = lazy(() => import('../pages/Register'))
+const CreateProduto = lazy(() => import('../pages/CadastrarProduto'))
 
 
 const routes = [
@@ -29,6 +30,11 @@ const routes = [
     path: '/produtos',
     component: Produtos,
   },
+  {
+    path: '/createproduct',
+    component: CreateProduto,
+  },
+  
   {
     path: '/funcionarios',
     component: Funcionarios,

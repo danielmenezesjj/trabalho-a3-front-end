@@ -43,7 +43,11 @@ function ProfileSettings() {
             if (!response.ok) {
                 throw new Error('Failed to upload avatar');
             }
+            dispatch(showNotification({ message: 'Usuario Atualizado com sucesso!', status: 1 }));
 
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
             const data = await response.json();
             console.log('Avatar uploaded successfully:', data);
         } catch (error) {

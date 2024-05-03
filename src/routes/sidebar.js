@@ -25,7 +25,7 @@ import { BsCartPlus } from "react-icons/bs";
 import { BsPersonLock } from "react-icons/bs";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-
+import { BiLayerPlus } from "react-icons/bi";
 
 
 const iconClasses = `h-6 w-6`
@@ -35,7 +35,7 @@ const role = localStorage.getItem('grupo')
 
 let routes = [];
 
-if (role == 'FUNCIONARIO') {
+if (role == 'OPERADOR') {
 
   routes = [
     {
@@ -72,6 +72,11 @@ if (role == 'FUNCIONARIO') {
           path: '/app/produtos', // url
           icon: <BsBoxes className={iconClasses} />, // icon component
           name: 'Produtos', // name that appear in Sidebar
+        },
+        {
+          path: '/app/createproduct', // url
+          icon: <BiLayerPlus className={iconClasses} />, // icon component
+          name: 'Cadastrar Produtos', // name that appear in Sidebar
         }
       ]
     },
