@@ -9,6 +9,7 @@ const Produtos = lazy(() => import('../pages/protected/Produtos'))
 const ModuloSuperMercado = lazy(() => import('../pages/protected/ModuloSuperMercado'))
 const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
 const Funcionarios = lazy(() => import('../pages/protected/Funcionarios'))
+const Perfil = lazy(() => import('../pages/protected/Perfil'))
 const Register = lazy(() => import('../pages/Register'))
 const CreateProduto = lazy(() => import('../pages/CadastrarProduto'))
 
@@ -21,6 +22,10 @@ const routes = [
   {
     path: '/welcome', // the url
     component: Welcome, // view rendered
+  },
+  {
+    path: '/perfil', // the url
+    component: Perfil, // view rendered
   },
   {
     path: '/vendas',

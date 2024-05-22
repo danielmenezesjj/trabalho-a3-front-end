@@ -26,6 +26,7 @@ import { BsPersonLock } from "react-icons/bs";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BiLayerPlus } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
 
 
 const iconClasses = `h-6 w-6`
@@ -96,9 +97,9 @@ if (role == 'OPERADOR') {
           name: 'Lista de funcionarios',
         },
         {
-          path: '/app/components',
-          icon: <CodeBracketSquareIcon className={submenuIconClasses} />,
-          name: 'Components',
+          path: '/app/perfil',
+          icon: <AiOutlineUser className={submenuIconClasses} />,
+          name: 'Cadastrar Perfil',
         }
       ]
     },
