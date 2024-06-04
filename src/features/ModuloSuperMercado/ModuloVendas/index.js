@@ -19,7 +19,7 @@ function ModuloVendas() {
     const [productCode, setProductCode] = useState("");
     const [nmPessoa, setNmPessoa] = useState("");
     const [cpf, setCpf] = useState("");
-    const [valorPago, setValorPago] = useState("");
+    const [valorPago, setValorPago] = useState(0);
     const [valorTotal, setValorTotal] = useState(0);
     const [quantidadePedida, setQuantidadePedida] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -68,9 +68,10 @@ function ModuloVendas() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(orderDetails),
+              
             });
 
-
+    
             if (response.ok) {
                 const data = await response.json();
                 const responseProdutos = await fetch(`http://localhost:9004/api/carrinho/${data.id}`);
@@ -148,10 +149,6 @@ function ModuloVendas() {
         setQuantidadePedida(parseInt(event.target.value));
     };
 
-    const openCodigoDialog = () => {
-        setIsCodigoDialogOpen(true);
-
-    };
 
     const closeCodigoDialog = () => {
         setIsCodigoDialogOpen(false);
