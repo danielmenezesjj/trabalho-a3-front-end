@@ -13,6 +13,7 @@ import axios from 'axios'; // Ou use fetch se preferir
 
 function CreateProduto() {
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         nmproduto: "",
         stativo: true,
@@ -22,7 +23,7 @@ function CreateProduto() {
         file: null,
     });
 
-    // Atualiza o estado formData com base no updateType e value fornecidos
+
     const updateFormValue = ({ updateType, value }) => {
         setFormData((prevData) => ({
             ...prevData,
@@ -30,7 +31,7 @@ function CreateProduto() {
         }));
     };
 
-    // Manipula a mudança do arquivo (imagem do produto)
+
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         setFormData((prevData) => ({
@@ -39,9 +40,22 @@ function CreateProduto() {
         }));
     };
 
-    // Envia os dados para a API usando FormData
+    const validateForm = () => {
+        const { nmproduto, cdproduto, vlunitario, quantidade, file } = formData;
+        if (!nmproduto || !cdproduto || vlunitario <= 0 || quantidade <= 0 || !file) {
+            dispatch(showNotification({ message: "Favor prencher todos os campos ", status: 0 }));
+            return false;
+        }
+        return true;
+    };
+
+
     const handleSubmit = async () => {
-        // Criando um objeto FormData para incluir os dados e a imagem
+        if (!validateForm()) {
+            return;
+        }
+        setIsLoading(true);
+
         const formDataToSubmit = new FormData();
         formDataToSubmit.append('nmproduto', formData.nmproduto);
         formDataToSubmit.append('stativo', formData.stativo);
@@ -65,12 +79,12 @@ function CreateProduto() {
             }
         } catch (error) {
             console.error('Erro ao enviar dados para a API:', error);
-        }
+        } 
     };
 
     return (
         <>
-                 <TitleCard title="Cadastrar produto" topMargin="mt-2">
+            <TitleCard title="Cadastrar produto" topMargin="mt-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <InputText labelTitle="Nome do Produto" defaultValue={formData.nmproduto} updateFormValue={updateFormValue} updateType="nmproduto" />
                     <InputText labelTitle="Código do Produto" defaultValue={formData.cdproduto} updateFormValue={updateFormValue} updateType="cdproduto" />
@@ -82,16 +96,17 @@ function CreateProduto() {
                         <input
                             type="file"
                             id="file"
-                            className="file-input file-input-bordered file-input-sm w-full max-w-xs" 
+                            className="file-input file-input-bordered file-input-sm w-full max-w-xs"
                             onChange={handleFileChange}
                         />
                     </div>
                 </div>
-                
                 <div className="mt-4">
-                    <button className="btn btn-primary float-right" onClick={handleSubmit}>Cadastrar Produto</button>
+                    <button className={`btn btn-primary float-right ${isLoading ? 'loading' : ''}`} onClick={handleSubmit} disabled={isLoading}>
+                        {isLoading ? 'Carregando...' : 'Cadastrar Produto'}
+                    </button>
                 </div>
-                
+
             </TitleCard>
         </>
     );
